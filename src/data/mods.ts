@@ -1067,7 +1067,7 @@ export const MODS: Mod[] = [
       'Unique weapon/tool effects',
       'Complements the vanilla smithing table system',
     ],
-    modrinth: 'mythicupgrades',
+    modrinth: 'mythic-upgrades',
   },
   {
     id: 'combat-roll',
