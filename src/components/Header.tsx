@@ -89,6 +89,13 @@ export default function Header() {
           >
             Changelog
           </Link>
+          <Link
+            to="/sim"
+            className="nav-link"
+            activeProps={{ className: 'nav-link active' }}
+          >
+            Simulator
+          </Link>
         </nav>
 
         {/* Actions */}

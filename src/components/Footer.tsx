@@ -44,6 +44,9 @@ export default function Footer() {
           <Link to="/changelog" className="nav-link" style={{ fontSize: '0.8rem' }}>
             Changelog
           </Link>
+          <Link to="/sim" className="nav-link" style={{ fontSize: '0.8rem' }}>
+            Simulator
+          </Link>
         </nav>
       </div>
     </footer>

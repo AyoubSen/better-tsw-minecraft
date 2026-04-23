@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SimRouteImport } from './routes/sim'
 import { Route as SetupRouteImport } from './routes/setup'
 import { Route as ModsRouteImport } from './routes/mods'
 import { Route as GuideRouteImport } from './routes/guide'
@@ -16,6 +17,11 @@ import { Route as ChangelogRouteImport } from './routes/changelog'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SimRoute = SimRouteImport.update({
+  id: '/sim',
+  path: '/sim',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SetupRoute = SetupRouteImport.update({
   id: '/setup',
   path: '/setup',
@@ -54,6 +60,7 @@ export interface FileRoutesByFullPath {
   '/guide': typeof GuideRoute
   '/mods': typeof ModsRoute
   '/setup': typeof SetupRoute
+  '/sim': typeof SimRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +69,7 @@ export interface FileRoutesByTo {
   '/guide': typeof GuideRoute
   '/mods': typeof ModsRoute
   '/setup': typeof SetupRoute
+  '/sim': typeof SimRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,13 +79,29 @@ export interface FileRoutesById {
   '/guide': typeof GuideRoute
   '/mods': typeof ModsRoute
   '/setup': typeof SetupRoute
+  '/sim': typeof SimRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/changelog' | '/guide' | '/mods' | '/setup'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/changelog'
+    | '/guide'
+    | '/mods'
+    | '/setup'
+    | '/sim'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/changelog' | '/guide' | '/mods' | '/setup'
-  id: '__root__' | '/' | '/about' | '/changelog' | '/guide' | '/mods' | '/setup'
+  to: '/' | '/about' | '/changelog' | '/guide' | '/mods' | '/setup' | '/sim'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/changelog'
+    | '/guide'
+    | '/mods'
+    | '/setup'
+    | '/sim'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -87,10 +111,18 @@ export interface RootRouteChildren {
   GuideRoute: typeof GuideRoute
   ModsRoute: typeof ModsRoute
   SetupRoute: typeof SetupRoute
+  SimRoute: typeof SimRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sim': {
+      id: '/sim'
+      path: '/sim'
+      fullPath: '/sim'
+      preLoaderRoute: typeof SimRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/setup': {
       id: '/setup'
       path: '/setup'
@@ -143,6 +175,7 @@ const rootRouteChildren: RootRouteChildren = {
   GuideRoute: GuideRoute,
   ModsRoute: ModsRoute,
   SetupRoute: SetupRoute,
+  SimRoute: SimRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

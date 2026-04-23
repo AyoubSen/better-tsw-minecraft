@@ -542,7 +542,7 @@ export const MODS: Mod[] = [
       'Mobs still cannot jump over (keeps pens working)',
       'No configuration needed',
     ],
-    modrinth: 'jumpoverfences',
+    modrinth: 'jump-over-fences',
   },
   {
     id: 'easy-elytra-takeoff',
