@@ -9,11 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SetupRouteImport } from './routes/setup'
 import { Route as ModsRouteImport } from './routes/mods'
 import { Route as GuideRouteImport } from './routes/guide'
+import { Route as ChangelogRouteImport } from './routes/changelog'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SetupRoute = SetupRouteImport.update({
+  id: '/setup',
+  path: '/setup',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ModsRoute = ModsRouteImport.update({
   id: '/mods',
   path: '/mods',
@@ -22,6 +29,11 @@ const ModsRoute = ModsRouteImport.update({
 const GuideRoute = GuideRouteImport.update({
   id: '/guide',
   path: '/guide',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChangelogRoute = ChangelogRouteImport.update({
+  id: '/changelog',
+  path: '/changelog',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -38,39 +50,54 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/changelog': typeof ChangelogRoute
   '/guide': typeof GuideRoute
   '/mods': typeof ModsRoute
+  '/setup': typeof SetupRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/changelog': typeof ChangelogRoute
   '/guide': typeof GuideRoute
   '/mods': typeof ModsRoute
+  '/setup': typeof SetupRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/changelog': typeof ChangelogRoute
   '/guide': typeof GuideRoute
   '/mods': typeof ModsRoute
+  '/setup': typeof SetupRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/guide' | '/mods'
+  fullPaths: '/' | '/about' | '/changelog' | '/guide' | '/mods' | '/setup'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/guide' | '/mods'
-  id: '__root__' | '/' | '/about' | '/guide' | '/mods'
+  to: '/' | '/about' | '/changelog' | '/guide' | '/mods' | '/setup'
+  id: '__root__' | '/' | '/about' | '/changelog' | '/guide' | '/mods' | '/setup'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  ChangelogRoute: typeof ChangelogRoute
   GuideRoute: typeof GuideRoute
   ModsRoute: typeof ModsRoute
+  SetupRoute: typeof SetupRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/setup': {
+      id: '/setup'
+      path: '/setup'
+      fullPath: '/setup'
+      preLoaderRoute: typeof SetupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/mods': {
       id: '/mods'
       path: '/mods'
@@ -83,6 +110,13 @@ declare module '@tanstack/react-router' {
       path: '/guide'
       fullPath: '/guide'
       preLoaderRoute: typeof GuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/changelog': {
+      id: '/changelog'
+      path: '/changelog'
+      fullPath: '/changelog'
+      preLoaderRoute: typeof ChangelogRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -105,8 +139,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  ChangelogRoute: ChangelogRoute,
   GuideRoute: GuideRoute,
   ModsRoute: ModsRoute,
+  SetupRoute: SetupRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

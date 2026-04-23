@@ -38,6 +38,12 @@ export default function Footer() {
           <Link to="/guide" className="nav-link" style={{ fontSize: '0.8rem' }}>
             New Player Guide
           </Link>
+          <Link to="/setup" className="nav-link" style={{ fontSize: '0.8rem' }}>
+            Prism Setup
+          </Link>
+          <Link to="/changelog" className="nav-link" style={{ fontSize: '0.8rem' }}>
+            Changelog
+          </Link>
         </nav>
       </div>
     </footer>

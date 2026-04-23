@@ -1,20 +1,18 @@
 # TSW Minecraft — Site TODO
 
-## In progress
-- [ ] Password gate (client-side, waiting on password choice)
+## Done
+- [x] Password gate — edit `VITE_GATE_PASSWORD` in `.env.local` to set the password
+- [x] Prism Launcher setup guide (`/setup`)
 
 ## Planned
 - [ ] Server status widget
       - API: https://api.mcsrvstat.us/3/tsw.hopto.org
       - Server: tsw.hopto.org · Minecraft 1.21.1 · Fabric 0.19.1
-      - Check with friends first before adding (privacy)
-      - No changes needed on the server side — read-only ping
+      - Confirm with friends first (privacy)
+      - No changes needed server-side — read-only ping
 
 - [ ] Changelog page
       - Static data file, updated manually when mods change
-      - Add today's new mod additions
-
-- [ ] "How to Join" page + Prism Launcher setup guide
 
 - [ ] Essential/featured badges on mod cards (JourneyMap, EMI, Waystones, Backpacks, Jade…)
 

@@ -75,6 +75,20 @@ export default function Header() {
           >
             Guide
           </Link>
+          <Link
+            to="/setup"
+            className="nav-link"
+            activeProps={{ className: 'nav-link active' }}
+          >
+            Setup
+          </Link>
+          <Link
+            to="/changelog"
+            className="nav-link"
+            activeProps={{ className: 'nav-link active' }}
+          >
+            Changelog
+          </Link>
         </nav>
 
         {/* Actions */}
