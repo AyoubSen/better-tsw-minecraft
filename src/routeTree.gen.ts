@@ -13,6 +13,7 @@ import { Route as SimRouteImport } from './routes/sim'
 import { Route as SetupRouteImport } from './routes/setup'
 import { Route as ModsRouteImport } from './routes/mods'
 import { Route as GuideRouteImport } from './routes/guide'
+import { Route as DirectedGuidesRouteImport } from './routes/directed-guides'
 import { Route as ChangelogRouteImport } from './routes/changelog'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -37,6 +38,11 @@ const GuideRoute = GuideRouteImport.update({
   path: '/guide',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DirectedGuidesRoute = DirectedGuidesRouteImport.update({
+  id: '/directed-guides',
+  path: '/directed-guides',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ChangelogRoute = ChangelogRouteImport.update({
   id: '/changelog',
   path: '/changelog',
@@ -57,6 +63,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/changelog': typeof ChangelogRoute
+  '/directed-guides': typeof DirectedGuidesRoute
   '/guide': typeof GuideRoute
   '/mods': typeof ModsRoute
   '/setup': typeof SetupRoute
@@ -66,6 +73,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/changelog': typeof ChangelogRoute
+  '/directed-guides': typeof DirectedGuidesRoute
   '/guide': typeof GuideRoute
   '/mods': typeof ModsRoute
   '/setup': typeof SetupRoute
@@ -76,6 +84,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/changelog': typeof ChangelogRoute
+  '/directed-guides': typeof DirectedGuidesRoute
   '/guide': typeof GuideRoute
   '/mods': typeof ModsRoute
   '/setup': typeof SetupRoute
@@ -87,17 +96,27 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/changelog'
+    | '/directed-guides'
     | '/guide'
     | '/mods'
     | '/setup'
     | '/sim'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/changelog' | '/guide' | '/mods' | '/setup' | '/sim'
+  to:
+    | '/'
+    | '/about'
+    | '/changelog'
+    | '/directed-guides'
+    | '/guide'
+    | '/mods'
+    | '/setup'
+    | '/sim'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/changelog'
+    | '/directed-guides'
     | '/guide'
     | '/mods'
     | '/setup'
@@ -108,6 +127,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ChangelogRoute: typeof ChangelogRoute
+  DirectedGuidesRoute: typeof DirectedGuidesRoute
   GuideRoute: typeof GuideRoute
   ModsRoute: typeof ModsRoute
   SetupRoute: typeof SetupRoute
@@ -144,6 +164,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuideRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/directed-guides': {
+      id: '/directed-guides'
+      path: '/directed-guides'
+      fullPath: '/directed-guides'
+      preLoaderRoute: typeof DirectedGuidesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/changelog': {
       id: '/changelog'
       path: '/changelog'
@@ -172,6 +199,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ChangelogRoute: ChangelogRoute,
+  DirectedGuidesRoute: DirectedGuidesRoute,
   GuideRoute: GuideRoute,
   ModsRoute: ModsRoute,
   SetupRoute: SetupRoute,

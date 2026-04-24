@@ -57,6 +57,9 @@ function Home() {
           <Link to="/mods" className="btn-primary">
             Browse All Mods
           </Link>
+          <Link to="/directed-guides" className="btn-ghost">
+            Directed Guides
+          </Link>
           <Link to="/guide" className="btn-ghost">
             🌱 New Player Guide
           </Link>
@@ -165,6 +168,33 @@ function Home() {
         </div>
         <Link to="/guide" className="btn-primary" style={{ flexShrink: 0 }}>
           Read the Guide →
+        </Link>
+      </section>
+
+      <section
+        style={{
+          marginTop: '1rem',
+          background: 'var(--bg-card)',
+          border: '1px solid var(--border)',
+          borderRadius: '1rem',
+          padding: '2rem',
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '1.5rem',
+        }}
+      >
+        <div style={{ maxWidth: 520 }}>
+          <p style={{ margin: '0 0 0.5rem', fontWeight: 700, color: 'var(--text)' }}>
+            One guide per mod — click to read.
+          </p>
+          <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--text-soft)', lineHeight: 1.6 }}>
+            Small cards for every mod you need to know: Waystones, JourneyMap, EMI, backpacks, combat, storage, and more. Search by name or problem, click a card to open the guide.
+          </p>
+        </div>
+        <Link to="/directed-guides" className="btn-ghost" style={{ flexShrink: 0 }}>
+          Open Directed Guides →
         </Link>
       </section>
 

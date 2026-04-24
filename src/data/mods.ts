@@ -1241,7 +1241,7 @@ export const MODS: Mod[] = [
     ],
     newbieNote:
       'Dying in Minecraft normally scatters all your items on the ground for 5 minutes before they disappear. This mod keeps them safe in a grave — take your time getting back!',
-    modrinth: 'youre-in-grave-danger',
+    modrinth: 'yigd',
   },
   {
     id: 'ench-desc',
