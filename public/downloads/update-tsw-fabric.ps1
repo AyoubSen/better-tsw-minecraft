@@ -1,7 +1,13 @@
 $ErrorActionPreference = "Stop"
 
-$FullBundleUrl = "https://8ptatswgh8.ufs.sh/f/MnMh6jksMhBK6owz4Carpt9CFmu3axYEDPbydUBfNoVewiA2"
-$NewModsBundleUrl = "https://8ptatswgh8.ufs.sh/f/MnMh6jksMhBKzeQeSVZ9par5dMy36g2Z1xYUKeotSL8RsG0E"
+$ManifestUrl = "https://better-tsw-minecraft.vercel.app/downloads/manifest.json"
+$FallbackManifest = @{
+	Version = "2026-04-23-1"
+	Minecraft = "1.21.1"
+	Fabric = "0.19.1"
+	ZipUrl = "https://8ptatswgh8.ufs.sh/f/MnMh6jksMhBK6owz4Carpt9CFmu3axYEDPbydUBfNoVewiA2"
+	NewModsZipUrl = "https://8ptatswgh8.ufs.sh/f/MnMh6jksMhBKzeQeSVZ9par5dMy36g2Z1xYUKeotSL8RsG0E"
+}
 $PackName = "TSW Fabric"
 $TempRoot = Join-Path $env:TEMP "tsw-fabric-updater"
 $ZipPath = Join-Path $TempRoot "mods.zip"
@@ -73,7 +79,28 @@ function Resolve-ModsFolder($SelectedPath) {
 	return $modsPath
 }
 
-function Select-Bundle {
+function Get-Manifest {
+	if ($ManifestUrl.Trim().Length -eq 0) {
+		return $FallbackManifest
+	}
+
+	try {
+		Write-Step "Checking latest download info"
+		$manifest = Invoke-RestMethod -Uri $ManifestUrl
+		return @{
+			Version = $manifest.version
+			Minecraft = $manifest.minecraft
+			Fabric = $manifest.fabric
+			ZipUrl = $manifest.zipUrl
+			NewModsZipUrl = $manifest.newModsZipUrl
+		}
+	} catch {
+		Write-Host "Could not load latest download info. Using the built-in fallback URLs." -ForegroundColor Yellow
+		return $FallbackManifest
+	}
+}
+
+function Select-Bundle($Manifest) {
 	Write-Host ""
 	Write-Host "Choose bundle:"
 	Write-Host "1) Full mod bundle - backs up existing .jar files, then replaces them"
@@ -84,14 +111,14 @@ function Select-Bundle {
 	if ($choice -eq "2") {
 		return @{
 			Name = "only new mods"
-			Url = $NewModsBundleUrl
+			Url = $Manifest.NewModsZipUrl
 			ReplaceExisting = $false
 		}
 	}
 
 	return @{
 		Name = "full mod bundle"
-		Url = $FullBundleUrl
+		Url = $Manifest.ZipUrl
 		ReplaceExisting = $true
 	}
 }
@@ -114,7 +141,10 @@ function Test-ZipFile($Path) {
 }
 
 Write-Host "$PackName updater" -ForegroundColor Green
-Write-Host "Minecraft 1.21.1 / Fabric Loader 0.19.1"
+$manifest = Get-Manifest
+
+Write-Host "Minecraft $($manifest.Minecraft) / Fabric Loader $($manifest.Fabric)"
+Write-Host "Pack version $($manifest.Version)"
 Write-Host ""
 Write-Host "This script downloads the hosted mods bundle, backs up your current .jar files, then installs the downloaded .jar files into the mods folder you select."
 Write-Host "It only touches .jar files inside the selected mods folder."
@@ -124,7 +154,7 @@ if (!(Confirm-Continue "Continue?")) {
 	exit 0
 }
 
-$bundle = Select-Bundle
+$bundle = Select-Bundle $manifest
 
 Write-Step "Select your Prism instance folder or its mods folder"
 $selectedPath = Get-TargetPath
@@ -211,10 +241,10 @@ foreach ($jar in $downloadedJars) {
 }
 
 $versionPath = Join-Path $modsFolder ".tsw-fabric-version"
-"2026-04-23-1" | Set-Content -LiteralPath $versionPath
+$manifest.Version | Set-Content -LiteralPath $versionPath
 
 Write-Step "Done"
 Write-Host "Installed $($downloadedJars.Count) mods into: $modsFolder" -ForegroundColor Green
-Write-Host "Launch the Prism instance and confirm Minecraft 1.21.1 / Fabric Loader 0.19.1."
+Write-Host "Launch the Prism instance and confirm Minecraft $($manifest.Minecraft) / Fabric Loader $($manifest.Fabric)."
 Write-Host ""
 Read-Host "Press Enter to close"

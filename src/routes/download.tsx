@@ -1,17 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Download, ExternalLink, FolderOpen, Terminal } from "lucide-react";
+import downloadManifest from "../../public/downloads/manifest.json";
 
 export const Route = createFileRoute("/download")({ component: DownloadPage });
 
 const PACK = {
-	version: "2026-04-23-1",
-	minecraft: "1.21.1",
-	fabric: "0.19.1",
-	updatedAt: "2026-04-23",
-	zipUrl:
-		"https://8ptatswgh8.ufs.sh/f/MnMh6jksMhBK6owz4Carpt9CFmu3axYEDPbydUBfNoVewiA2",
-	newModsZipUrl:
-		"https://8ptatswgh8.ufs.sh/f/MnMh6jksMhBKzeQeSVZ9par5dMy36g2Z1xYUKeotSL8RsG0E",
+	...downloadManifest,
 	updaterUrl: "/downloads/update-tsw-fabric.ps1",
 };
 

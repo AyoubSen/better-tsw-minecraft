@@ -124,9 +124,9 @@ When the mod bundle changes:
 
 1. Upload the new zip to the file host.
 2. Update `zipUrl`, `version`, `updatedAt`, and `notes` in `public/downloads/manifest.json`.
-3. Update the matching constants in `src/routes/download.tsx`.
-4. If the updater script points directly at the zip, update `$ManifestUrl` in `public/downloads/update-tsw-fabric.ps1`.
-5. Run `npm run check` and `npm run build`.
+3. Run `npm run check` and `npm run build`.
+
+The `/download` page imports this manifest directly, so it updates from the same source. The updater script has a built-in fallback copy of the current manifest values. Once the site has a stable public URL, set `$ManifestUrl` in `public/downloads/update-tsw-fabric.ps1` to the full URL for `/downloads/manifest.json` so the script can fetch future changes automatically.
 
 Do not commit UploadThing API tokens. The updater and app only need the public file URL for downloads. UploadThing tokens are only for server-side upload/list/delete operations.
 
