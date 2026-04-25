@@ -13,6 +13,7 @@ import { Route as SimRouteImport } from './routes/sim'
 import { Route as SetupRouteImport } from './routes/setup'
 import { Route as ModsRouteImport } from './routes/mods'
 import { Route as GuideRouteImport } from './routes/guide'
+import { Route as DownloadRouteImport } from './routes/download'
 import { Route as DirectedGuidesRouteImport } from './routes/directed-guides'
 import { Route as ChecklistRouteImport } from './routes/checklist'
 import { Route as ChangelogRouteImport } from './routes/changelog'
@@ -37,6 +38,11 @@ const ModsRoute = ModsRouteImport.update({
 const GuideRoute = GuideRouteImport.update({
   id: '/guide',
   path: '/guide',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DownloadRoute = DownloadRouteImport.update({
+  id: '/download',
+  path: '/download',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DirectedGuidesRoute = DirectedGuidesRouteImport.update({
@@ -71,6 +77,7 @@ export interface FileRoutesByFullPath {
   '/changelog': typeof ChangelogRoute
   '/checklist': typeof ChecklistRoute
   '/directed-guides': typeof DirectedGuidesRoute
+  '/download': typeof DownloadRoute
   '/guide': typeof GuideRoute
   '/mods': typeof ModsRoute
   '/setup': typeof SetupRoute
@@ -82,6 +89,7 @@ export interface FileRoutesByTo {
   '/changelog': typeof ChangelogRoute
   '/checklist': typeof ChecklistRoute
   '/directed-guides': typeof DirectedGuidesRoute
+  '/download': typeof DownloadRoute
   '/guide': typeof GuideRoute
   '/mods': typeof ModsRoute
   '/setup': typeof SetupRoute
@@ -94,6 +102,7 @@ export interface FileRoutesById {
   '/changelog': typeof ChangelogRoute
   '/checklist': typeof ChecklistRoute
   '/directed-guides': typeof DirectedGuidesRoute
+  '/download': typeof DownloadRoute
   '/guide': typeof GuideRoute
   '/mods': typeof ModsRoute
   '/setup': typeof SetupRoute
@@ -107,6 +116,7 @@ export interface FileRouteTypes {
     | '/changelog'
     | '/checklist'
     | '/directed-guides'
+    | '/download'
     | '/guide'
     | '/mods'
     | '/setup'
@@ -118,6 +128,7 @@ export interface FileRouteTypes {
     | '/changelog'
     | '/checklist'
     | '/directed-guides'
+    | '/download'
     | '/guide'
     | '/mods'
     | '/setup'
@@ -129,6 +140,7 @@ export interface FileRouteTypes {
     | '/changelog'
     | '/checklist'
     | '/directed-guides'
+    | '/download'
     | '/guide'
     | '/mods'
     | '/setup'
@@ -141,6 +153,7 @@ export interface RootRouteChildren {
   ChangelogRoute: typeof ChangelogRoute
   ChecklistRoute: typeof ChecklistRoute
   DirectedGuidesRoute: typeof DirectedGuidesRoute
+  DownloadRoute: typeof DownloadRoute
   GuideRoute: typeof GuideRoute
   ModsRoute: typeof ModsRoute
   SetupRoute: typeof SetupRoute
@@ -175,6 +188,13 @@ declare module '@tanstack/react-router' {
       path: '/guide'
       fullPath: '/guide'
       preLoaderRoute: typeof GuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/download': {
+      id: '/download'
+      path: '/download'
+      fullPath: '/download'
+      preLoaderRoute: typeof DownloadRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/directed-guides': {
@@ -221,6 +241,7 @@ const rootRouteChildren: RootRouteChildren = {
   ChangelogRoute: ChangelogRoute,
   ChecklistRoute: ChecklistRoute,
   DirectedGuidesRoute: DirectedGuidesRoute,
+  DownloadRoute: DownloadRoute,
   GuideRoute: GuideRoute,
   ModsRoute: ModsRoute,
   SetupRoute: SetupRoute,

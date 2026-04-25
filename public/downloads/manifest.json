@@ -1,0 +1,14 @@
+{
+  "version": "2026-04-25-1",
+  "minecraft": "1.21.1",
+  "fabric": "0.19.1",
+  "zipUrl": "https://8ptatswgh8.ufs.sh/f/MnMh6jksMhBK6owz4Carpt9CFmu3axYEDPbydUBfNoVewiA2",
+  "newModsZipUrl": "https://8ptatswgh8.ufs.sh/f/MnMh6jksMhBKzeQeSVZ9par5dMy36g2Z1xYUKeotSL8RsG0E",
+  "sha256": "",
+  "newModsSha256": "",
+  "updatedAt": "2026-04-25",
+  "notes": [
+    "Updated hosted full mod bundle zip.",
+    "Updated only-new-mods bundle zip for incremental installs."
+  ]
+}

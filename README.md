@@ -55,6 +55,7 @@ npm run preview
 - `/mods` - searchable/filterable mod browser
 - `/guide` - new player and modded-player guide
 - `/setup` - Prism Launcher setup guide
+- `/download` - hosted mod bundle and optional Windows updater script
 - `/directed-guides` - one-guide-per-mod/player-goal browser
 - `/changelog` - modpack change notes
 - `/about` - placeholder/about page
@@ -114,6 +115,20 @@ Future cleanup should gradually extract repeated inline patterns into reusable c
 `src/components/PasswordGate.tsx` is currently a passthrough. The older client-side gate is commented out.
 
 If this site needs real privacy, enforce it at the hosting/server level. A client-side password gate only hides casual access and should not be treated as security.
+
+## Hosted Mod Bundle
+
+The public download manifest lives at `public/downloads/manifest.json`.
+
+When the mod bundle changes:
+
+1. Upload the new zip to the file host.
+2. Update `zipUrl`, `version`, `updatedAt`, and `notes` in `public/downloads/manifest.json`.
+3. Update the matching constants in `src/routes/download.tsx`.
+4. If the updater script points directly at the zip, update `$ManifestUrl` in `public/downloads/update-tsw-fabric.ps1`.
+5. Run `npm run check` and `npm run build`.
+
+Do not commit UploadThing API tokens. The updater and app only need the public file URL for downloads. UploadThing tokens are only for server-side upload/list/delete operations.
 
 ## Deployment
 
