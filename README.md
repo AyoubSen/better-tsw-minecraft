@@ -1,205 +1,134 @@
-Welcome to your new TanStack Start app! 
+# TSW Fabric Guide
 
-# Getting Started
+A small TanStack Start app for the TSW Minecraft Fabric server. It gives players a clear place to find setup instructions, mod explanations, beginner guidance, directed mod guides, and changelog notes.
 
-To run this application:
+The app is intentionally content-heavy and low-backend: most player-facing information lives in typed data files under `src/data`.
+
+## Tech Stack
+
+- TanStack Start / TanStack Router
+- React 19
+- Vite
+- Tailwind CSS 4 for base tooling, with most current UI styled through CSS variables and component styles
+- Biome for formatting and linting
+- Fuse.js for local mod search
+
+## Local Development
+
+Install dependencies:
 
 ```bash
 npm install
+```
+
+Run the dev server:
+
+```bash
 npm run dev
 ```
 
-# Building For Production
+The app runs on `http://localhost:3000`.
 
-To build this application for production:
+## Verification
+
+Run before committing meaningful changes:
+
+```bash
+npm run check
+npm run build
+```
+
+Other available scripts:
+
+```bash
+npm run format
+npm run lint
+npm run test
+npm run preview
+```
+
+`npm run test` is configured but the project currently has little/no test coverage. Treat `check` and `build` as the required baseline.
+
+## App Routes
+
+- `/` - homepage and category overview
+- `/mods` - searchable/filterable mod browser
+- `/guide` - new player and modded-player guide
+- `/setup` - Prism Launcher setup guide
+- `/directed-guides` - one-guide-per-mod/player-goal browser
+- `/changelog` - modpack change notes
+- `/about` - placeholder/about page
+- `/sim` - archived route that redirects to directed guides
+
+## Editing Content
+
+Most updates should happen in these files:
+
+- `src/data/mods.ts` - mod list, categories, descriptions, links, newbie notes
+- `src/data/directedGuides.ts` - directed player guides and searchable terms
+- `src/data/changelog.ts` - changelog entries
+- `src/routes/guide.tsx` - broader beginner/modded guide copy
+- `src/routes/setup.tsx` - Prism setup guide copy
+
+When adding or editing mods:
+
+- Keep `id` values unique and stable.
+- Use an existing category from `CATEGORY_ORDER` unless you also update category metadata.
+- Add search-friendly language to descriptions/features, not just mod names.
+- Include Modrinth/CurseForge slugs when available.
+- Mark player-facing mods separately from technical/library dependencies.
+
+When adding directed guides:
+
+- Write for player tasks, not just mod encyclopaedia entries.
+- Include likely search terms such as item names, problems, and aliases.
+- Keep guides short enough to read while playing.
+- Prefer concrete first actions: "press J", "craft a backpack", "activate a waystone".
+
+## URL Sharing
+
+The mod browser and directed guides support shareable search URLs:
+
+- `/mods?category=storage`
+- `/mods?q=backpack`
+- `/directed-guides?q=waystones`
+- `/directed-guides?category=Exploration`
+
+Invalid categories are ignored and fall back to the default view.
+
+## Styling Notes
+
+Global tokens and shared utility classes live in `src/styles.css`.
+
+The current UI uses:
+
+- CSS variables for theme colors
+- dark mode by default
+- a mobile header menu below tablet width
+- inline component styles in several older pages
+
+Future cleanup should gradually extract repeated inline patterns into reusable components/classes instead of adding more one-off style objects.
+
+## Privacy / Password Gate
+
+`src/components/PasswordGate.tsx` is currently a passthrough. The older client-side gate is commented out.
+
+If this site needs real privacy, enforce it at the hosting/server level. A client-side password gate only hides casual access and should not be treated as security.
+
+## Deployment
+
+Build output is generated with:
 
 ```bash
 npm run build
 ```
 
-## Testing
+The app uses TanStack Start/Nitro output under `.output`. Confirm the target hosting provider supports the generated server output, or adapt the deployment preset in `vite.config.ts` / Nitro config as needed.
 
-This project uses [Vitest](https://vitest.dev/) for testing. You can run the tests with:
+## Current Improvement Priorities
 
-```bash
-npm run test
-```
-
-## Styling
-
-This project uses [Tailwind CSS](https://tailwindcss.com/) for styling.
-
-### Removing Tailwind CSS
-
-If you prefer not to use Tailwind CSS:
-
-1. Remove the demo pages in `src/routes/demo/`
-2. Replace the Tailwind import in `src/styles.css` with your own styles
-3. Remove `tailwindcss()` from the plugins array in `vite.config.ts`
-4. Uninstall the packages: `npm install @tailwindcss/vite tailwindcss -D`
-
-## Linting & Formatting
-
-This project uses [Biome](https://biomejs.dev/) for linting and formatting. The following scripts are available:
-
-
-```bash
-npm run lint
-npm run format
-npm run check
-```
-
-
-
-## Routing
-
-This project uses [TanStack Router](https://tanstack.com/router) with file-based routing. Routes are managed as files in `src/routes`.
-
-### Adding A Route
-
-To add a new route to your application just add a new file in the `./src/routes` directory.
-
-TanStack will automatically generate the content of the route file for you.
-
-Now that you have two routes you can use a `Link` component to navigate between them.
-
-### Adding Links
-
-To use SPA (Single Page Application) navigation you will need to import the `Link` component from `@tanstack/react-router`.
-
-```tsx
-import { Link } from "@tanstack/react-router";
-```
-
-Then anywhere in your JSX you can use it like so:
-
-```tsx
-<Link to="/about">About</Link>
-```
-
-This will create a link that will navigate to the `/about` route.
-
-More information on the `Link` component can be found in the [Link documentation](https://tanstack.com/router/v1/docs/framework/react/api/router/linkComponent).
-
-### Using A Layout
-
-In the File Based Routing setup the layout is located in `src/routes/__root.tsx`. Anything you add to the root route will appear in all the routes. The route content will appear in the JSX where you render `{children}` in the `shellComponent`.
-
-Here is an example layout that includes a header:
-
-```tsx
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
-
-export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: 'My App' },
-    ],
-  }),
-  shellComponent: ({ children }) => (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        <header>
-          <nav>
-            <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-          </nav>
-        </header>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  ),
-})
-```
-
-More information on layouts can be found in the [Layouts documentation](https://tanstack.com/router/latest/docs/framework/react/guide/routing-concepts#layouts).
-
-## Server Functions
-
-TanStack Start provides server functions that allow you to write server-side code that seamlessly integrates with your client components.
-
-```tsx
-import { createServerFn } from '@tanstack/react-start'
-
-const getServerTime = createServerFn({
-  method: 'GET',
-}).handler(async () => {
-  return new Date().toISOString()
-})
-
-// Use in a component
-function MyComponent() {
-  const [time, setTime] = useState('')
-  
-  useEffect(() => {
-    getServerTime().then(setTime)
-  }, [])
-  
-  return <div>Server time: {time}</div>
-}
-```
-
-## API Routes
-
-You can create API routes by using the `server` property in your route definitions:
-
-```tsx
-import { createFileRoute } from '@tanstack/react-router'
-import { json } from '@tanstack/react-start'
-
-export const Route = createFileRoute('/api/hello')({
-  server: {
-    handlers: {
-      GET: () => json({ message: 'Hello, World!' }),
-    },
-  },
-})
-```
-
-## Data Fetching
-
-There are multiple ways to fetch data in your application. You can use TanStack Query to fetch data from a server. But you can also use the `loader` functionality built into TanStack Router to load the data for a route before it's rendered.
-
-For example:
-
-```tsx
-import { createFileRoute } from '@tanstack/react-router'
-
-export const Route = createFileRoute('/people')({
-  loader: async () => {
-    const response = await fetch('https://swapi.dev/api/people')
-    return response.json()
-  },
-  component: PeopleComponent,
-})
-
-function PeopleComponent() {
-  const data = Route.useLoaderData()
-  return (
-    <ul>
-      {data.results.map((person) => (
-        <li key={person.name}>{person.name}</li>
-      ))}
-    </ul>
-  )
-}
-```
-
-Loaders simplify your data fetching logic dramatically. Check out more information in the [Loader documentation](https://tanstack.com/router/latest/docs/framework/react/guide/data-loading#loader-parameters).
-
-# Demo files
-
-Files prefixed with `demo` can be safely deleted. They are there to provide a starting point for you to play around with the features you've installed.
-
-# Learn More
-
-You can learn more about all of the offerings from TanStack in the [TanStack documentation](https://tanstack.com).
-
-For TanStack Start specific documentation, visit [TanStack Start](https://tanstack.com/start).
-# better-tsw-minecraft
+1. Replace placeholder/about content.
+2. Add a First Session Checklist for players.
+3. Add a keybinds/troubleshooting guide.
+4. Continue reducing duplicated inline styling.
+5. Add lightweight content validation for duplicate IDs, invalid categories, and missing links.

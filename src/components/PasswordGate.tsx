@@ -1,8 +1,12 @@
 // PASSWORD GATE — temporarily disabled. Uncomment the default export below to re-enable.
 // To re-enable: comment out the passthrough export and uncomment the full component.
 
-export default function PasswordGate({ children }: { children: React.ReactNode }) {
-  return <>{children}</>
+export default function PasswordGate({
+	children,
+}: {
+	children: React.ReactNode;
+}) {
+	return <>{children}</>;
 }
 
 /*

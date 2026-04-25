@@ -1,9 +1,9 @@
-import { createFileRoute, Navigate } from '@tanstack/react-router'
+import { createFileRoute, Navigate } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/sim')({ component: ArchivedSimPage })
+export const Route = createFileRoute("/sim")({ component: ArchivedSimPage });
 
 function ArchivedSimPage() {
-  /*
+	/*
     Archived simulator route.
 
     We intentionally pulled the interactive simulator out of the live app because it drifted away
@@ -12,5 +12,5 @@ function ArchivedSimPage() {
     We might come back to this later with a much narrower concept, but for now `/sim` simply
     forwards users to the directed guides page instead of exposing the old mock-Minecraft UI.
   */
-  return <Navigate to="/directed-guides" />
+	return <Navigate to="/directed-guides" />;
 }

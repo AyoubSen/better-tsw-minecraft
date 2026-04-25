@@ -14,6 +14,7 @@ import { Route as SetupRouteImport } from './routes/setup'
 import { Route as ModsRouteImport } from './routes/mods'
 import { Route as GuideRouteImport } from './routes/guide'
 import { Route as DirectedGuidesRouteImport } from './routes/directed-guides'
+import { Route as ChecklistRouteImport } from './routes/checklist'
 import { Route as ChangelogRouteImport } from './routes/changelog'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -43,6 +44,11 @@ const DirectedGuidesRoute = DirectedGuidesRouteImport.update({
   path: '/directed-guides',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ChecklistRoute = ChecklistRouteImport.update({
+  id: '/checklist',
+  path: '/checklist',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ChangelogRoute = ChangelogRouteImport.update({
   id: '/changelog',
   path: '/changelog',
@@ -63,6 +69,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/changelog': typeof ChangelogRoute
+  '/checklist': typeof ChecklistRoute
   '/directed-guides': typeof DirectedGuidesRoute
   '/guide': typeof GuideRoute
   '/mods': typeof ModsRoute
@@ -73,6 +80,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/changelog': typeof ChangelogRoute
+  '/checklist': typeof ChecklistRoute
   '/directed-guides': typeof DirectedGuidesRoute
   '/guide': typeof GuideRoute
   '/mods': typeof ModsRoute
@@ -84,6 +92,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/changelog': typeof ChangelogRoute
+  '/checklist': typeof ChecklistRoute
   '/directed-guides': typeof DirectedGuidesRoute
   '/guide': typeof GuideRoute
   '/mods': typeof ModsRoute
@@ -96,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/changelog'
+    | '/checklist'
     | '/directed-guides'
     | '/guide'
     | '/mods'
@@ -106,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/changelog'
+    | '/checklist'
     | '/directed-guides'
     | '/guide'
     | '/mods'
@@ -116,6 +127,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/changelog'
+    | '/checklist'
     | '/directed-guides'
     | '/guide'
     | '/mods'
@@ -127,6 +139,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ChangelogRoute: typeof ChangelogRoute
+  ChecklistRoute: typeof ChecklistRoute
   DirectedGuidesRoute: typeof DirectedGuidesRoute
   GuideRoute: typeof GuideRoute
   ModsRoute: typeof ModsRoute
@@ -171,6 +184,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DirectedGuidesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/checklist': {
+      id: '/checklist'
+      path: '/checklist'
+      fullPath: '/checklist'
+      preLoaderRoute: typeof ChecklistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/changelog': {
       id: '/changelog'
       path: '/changelog'
@@ -199,6 +219,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ChangelogRoute: ChangelogRoute,
+  ChecklistRoute: ChecklistRoute,
   DirectedGuidesRoute: DirectedGuidesRoute,
   GuideRoute: GuideRoute,
   ModsRoute: ModsRoute,
