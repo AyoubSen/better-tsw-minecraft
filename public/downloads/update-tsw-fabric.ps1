@@ -211,7 +211,7 @@ foreach ($jar in $downloadedJars) {
 }
 
 $versionPath = Join-Path $modsFolder ".tsw-fabric-version"
-"2026-04-25-1" | Set-Content -LiteralPath $versionPath
+"2026-04-23-1" | Set-Content -LiteralPath $versionPath
 
 Write-Step "Done"
 Write-Host "Installed $($downloadedJars.Count) mods into: $modsFolder" -ForegroundColor Green

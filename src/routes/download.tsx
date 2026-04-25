@@ -4,10 +4,10 @@ import { Download, ExternalLink, FolderOpen, Terminal } from "lucide-react";
 export const Route = createFileRoute("/download")({ component: DownloadPage });
 
 const PACK = {
-	version: "2026-04-25-1",
+	version: "2026-04-23-1",
 	minecraft: "1.21.1",
 	fabric: "0.19.1",
-	updatedAt: "2026-04-25",
+	updatedAt: "2026-04-23",
 	zipUrl:
 		"https://8ptatswgh8.ufs.sh/f/MnMh6jksMhBK6owz4Carpt9CFmu3axYEDPbydUBfNoVewiA2",
 	newModsZipUrl:
