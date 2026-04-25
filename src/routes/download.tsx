@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Download, ExternalLink, ShieldCheck, Terminal } from "lucide-react";
+import { Download, ExternalLink, FolderOpen, Terminal } from "lucide-react";
 
 export const Route = createFileRoute("/download")({ component: DownloadPage });
 
@@ -12,7 +12,6 @@ const PACK = {
 		"https://8ptatswgh8.ufs.sh/f/MnMh6jksMhBK6owz4Carpt9CFmu3axYEDPbydUBfNoVewiA2",
 	newModsZipUrl:
 		"https://8ptatswgh8.ufs.sh/f/MnMh6jksMhBKzeQeSVZ9par5dMy36g2Z1xYUKeotSL8RsG0E",
-	manifestUrl: "/downloads/manifest.json",
 	updaterUrl: "/downloads/update-tsw-fabric.ps1",
 };
 
@@ -92,8 +91,8 @@ function DownloadPage() {
 					}}
 				>
 					Use the manual zip if you want the simplest path. Use the Windows
-					updater if you are comfortable running a local script that installs
-					the mods into the Prism instance you select.
+					updater if you want it to place the files into your selected Prism
+					instance for you.
 				</p>
 			</section>
 
@@ -168,8 +167,7 @@ function DownloadPage() {
 					<p style={{ margin: "0 0 1rem" }}>
 						Lets you choose either the full bundle or only-new-mods bundle, asks
 						you to pick your Prism instance or `mods` folder, then installs the
-						downloaded `.jar` files. Updater mode requires `.zip` files, not
-						`.rar` files.
+						downloaded `.jar` files.
 					</p>
 					<a href={PACK.updaterUrl} className="btn-primary" download>
 						Download updater script
@@ -193,7 +191,7 @@ function DownloadPage() {
 						alignItems: "flex-start",
 					}}
 				>
-					<ShieldCheck
+					<FolderOpen
 						size={18}
 						style={{ color: "var(--accent)", flexShrink: 0, marginTop: 2 }}
 					/>
@@ -205,7 +203,7 @@ function DownloadPage() {
 								color: "var(--text)",
 							}}
 						>
-							Script safety notes
+							Which folder should I pick?
 						</p>
 						<p
 							style={{
@@ -215,9 +213,9 @@ function DownloadPage() {
 								lineHeight: 1.65,
 							}}
 						>
-							The updater does not need an UploadThing token. It only downloads
-							the public zip URL. It asks you to select the target folder and
-							only moves `.jar` files inside that selected `mods` folder.
+							Pick your Prism instance folder, or the `mods` folder inside it.
+							If your instance is hidden in AppData, choose the paste-path
+							option in the updater and paste the full folder path.
 						</p>
 					</div>
 				</div>
@@ -246,8 +244,8 @@ function DownloadPage() {
 					}}
 				>
 					After downloading the script, right-click it and choose "Run with
-					PowerShell". If Windows blocks it, you can open PowerShell in the
-					download folder and run:
+					PowerShell". If Windows asks for confirmation, choose to run it. If
+					that does not work, open PowerShell in your Downloads folder and run:
 				</p>
 				<pre
 					style={{
@@ -264,8 +262,6 @@ function DownloadPage() {
 					{`powershell -ExecutionPolicy Bypass -File .\\update-tsw-fabric.ps1`}
 				</pre>
 				<div style={{ marginTop: "1rem" }}>
-					<a href={PACK.manifestUrl}>View manifest</a>
-					<span style={{ color: "var(--text-muted)" }}> · </span>
 					<Link to="/setup">Need Prism setup help?</Link>
 				</div>
 			</section>
