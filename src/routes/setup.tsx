@@ -633,6 +633,13 @@ function SetupPage() {
 						Player Guide
 					</Link>
 					<Link
+						to="/troubleshooting"
+						className="btn-ghost"
+						style={{ fontSize: "0.83rem", padding: "0.5rem 1rem" }}
+					>
+						Troubleshooting
+					</Link>
+					<Link
 						to="/mods"
 						className="btn-primary"
 						style={{ fontSize: "0.83rem", padding: "0.5rem 1rem" }}

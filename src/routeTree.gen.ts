@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TroubleshootingRouteImport } from './routes/troubleshooting'
 import { Route as SimRouteImport } from './routes/sim'
 import { Route as SetupRouteImport } from './routes/setup'
 import { Route as ModsRouteImport } from './routes/mods'
@@ -20,6 +21,11 @@ import { Route as ChangelogRouteImport } from './routes/changelog'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TroubleshootingRoute = TroubleshootingRouteImport.update({
+  id: '/troubleshooting',
+  path: '/troubleshooting',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SimRoute = SimRouteImport.update({
   id: '/sim',
   path: '/sim',
@@ -82,6 +88,7 @@ export interface FileRoutesByFullPath {
   '/mods': typeof ModsRoute
   '/setup': typeof SetupRoute
   '/sim': typeof SimRoute
+  '/troubleshooting': typeof TroubleshootingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -94,6 +101,7 @@ export interface FileRoutesByTo {
   '/mods': typeof ModsRoute
   '/setup': typeof SetupRoute
   '/sim': typeof SimRoute
+  '/troubleshooting': typeof TroubleshootingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -107,6 +115,7 @@ export interface FileRoutesById {
   '/mods': typeof ModsRoute
   '/setup': typeof SetupRoute
   '/sim': typeof SimRoute
+  '/troubleshooting': typeof TroubleshootingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -121,6 +130,7 @@ export interface FileRouteTypes {
     | '/mods'
     | '/setup'
     | '/sim'
+    | '/troubleshooting'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -133,6 +143,7 @@ export interface FileRouteTypes {
     | '/mods'
     | '/setup'
     | '/sim'
+    | '/troubleshooting'
   id:
     | '__root__'
     | '/'
@@ -145,6 +156,7 @@ export interface FileRouteTypes {
     | '/mods'
     | '/setup'
     | '/sim'
+    | '/troubleshooting'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -158,10 +170,18 @@ export interface RootRouteChildren {
   ModsRoute: typeof ModsRoute
   SetupRoute: typeof SetupRoute
   SimRoute: typeof SimRoute
+  TroubleshootingRoute: typeof TroubleshootingRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/troubleshooting': {
+      id: '/troubleshooting'
+      path: '/troubleshooting'
+      fullPath: '/troubleshooting'
+      preLoaderRoute: typeof TroubleshootingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sim': {
       id: '/sim'
       path: '/sim'
@@ -246,6 +266,7 @@ const rootRouteChildren: RootRouteChildren = {
   ModsRoute: ModsRoute,
   SetupRoute: SetupRoute,
   SimRoute: SimRoute,
+  TroubleshootingRoute: TroubleshootingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

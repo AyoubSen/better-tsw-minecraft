@@ -7,6 +7,7 @@ const NAV_LINKS = [
 	{ to: "/", label: "Home", exact: true },
 	{ to: "/setup", label: "Setup" },
 	{ to: "/download", label: "Download" },
+	{ to: "/troubleshooting", label: "Help" },
 	{ to: "/checklist", label: "Checklist" },
 	{ to: "/guide", label: "Guide" },
 	{ to: "/directed-guides", label: "Directed Guides" },

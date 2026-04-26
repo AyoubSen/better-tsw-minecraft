@@ -257,6 +257,8 @@ function DownloadPage() {
 				</pre>
 				<div style={{ marginTop: "1rem" }}>
 					<Link to="/setup">Need Prism setup help?</Link>
+					<span style={{ color: "var(--text-muted)" }}> · </span>
+					<Link to="/troubleshooting">Something broken?</Link>
 				</div>
 			</section>
 		</main>
