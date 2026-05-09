@@ -1520,21 +1520,6 @@ export const MODS: Mod[] = [
 		],
 		modrinth: "stoneworks",
 	},
-	{
-		id: "dye-depot",
-		name: "Dye Depot",
-		category: "decoration",
-		description:
-			"Adds 16 new dye colours and improves dye-related customization for banners, collars, sheep, fish, and other colourable vanilla systems.",
-		features: [
-			"16 additional dye colours",
-			"Expanded colour options for decorative blocks and items",
-			"Improved dye crafting and conversion flow",
-			"Optional visual tweaks for vanilla dye naming and textures",
-		],
-		modrinth: "dye-depot",
-	},
-
 	// ── MOBS & TRADING ────────────────────────────────────────────────────
 
 	{

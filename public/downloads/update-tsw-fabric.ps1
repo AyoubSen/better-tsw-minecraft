@@ -5,8 +5,8 @@ $FallbackManifest = @{
 	Version = "2026-04-23-1"
 	Minecraft = "1.21.1"
 	Fabric = "0.19.1"
-	ZipUrl = "https://8ptatswgh8.ufs.sh/f/MnMh6jksMhBKrdmchaF4pvsIXJa6PUR2bwfrMEhVGHButA1n"
-	NewModsZipUrl = "https://8ptatswgh8.ufs.sh/f/MnMh6jksMhBK84s9x87ZcEvdBuM6YW95AjIGQkPoe1ChqV3s"
+	ZipUrl = "https://8ptatswgh8.ufs.sh/f/MnMh6jksMhBKeiBTBCS1ZghtujW7MURBfpISxXkwN6HaEobe"
+	NewModsZipUrl = "https://8ptatswgh8.ufs.sh/f/MnMh6jksMhBK1fNYZndeiTmVgFhNr3ClIP6Swe9yspKa0Qk7"
 }
 $PackName = "TSW Fabric"
 $TempRoot = Join-Path $env:TEMP "tsw-fabric-updater"

@@ -52,10 +52,6 @@ export const CHANGELOG: ChangelogEntry[] = [
 				name: "Stoneworks",
 				note: "More stone variants, slabs, stairs, walls, and building options",
 			},
-			{
-				name: "Dye Depot",
-				note: "16 new dye colours and expanded colour customization",
-			},
 			{ name: "Cryonic Config", note: "Library — required by other mods" },
 			{
 				name: "Exposure Polaroid",
