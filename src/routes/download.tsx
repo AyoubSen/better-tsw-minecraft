@@ -209,7 +209,12 @@ function DownloadPage() {
 						>
 							Pick your Prism instance folder, or the `mods` folder inside it.
 							If your instance is hidden in AppData, choose the paste-path
-							option in the updater and paste the full folder path.
+							option in the updater and paste the full folder path. To find that
+							path, open Prism Launcher, select your instance, click{" "}
+							<strong>Edit</strong>, choose <strong>Mods</strong> on the left,
+							then click <strong>Open folder</strong> in the bottom-right. When
+							File Explorer opens the mods folder, click the address bar at the
+							top and copy the full path.
 						</p>
 					</div>
 				</div>
@@ -227,7 +232,7 @@ function DownloadPage() {
 					className="label"
 					style={{ marginBottom: "0.65rem", color: "var(--accent)" }}
 				>
-					Updater command
+					Beginner updater guide
 				</p>
 				<p
 					style={{
@@ -237,14 +242,45 @@ function DownloadPage() {
 						lineHeight: 1.65,
 					}}
 				>
-					After downloading the script, right-click it and choose "Run with
-					PowerShell". If Windows asks for confirmation, choose to run it. If
-					that does not work, open PowerShell in your Downloads folder and run:
+					The updater is a small PowerShell script. If double-clicking it does
+					nothing, use these steps:
 				</p>
+				<ol
+					style={{
+						margin: "0 0 1rem",
+						paddingLeft: "1.25rem",
+						fontSize: "0.84rem",
+						color: "var(--text-soft)",
+						lineHeight: 1.7,
+					}}
+				>
+					<li>
+						Click <strong>Download updater script</strong>. It will usually save
+						to your <strong>Downloads</strong> folder.
+					</li>
+					<li>
+						Open <strong>File Explorer</strong>, then open{" "}
+						<strong>Downloads</strong>.
+					</li>
+					<li>
+						Right-click an empty space in the Downloads folder and choose{" "}
+						<strong>Open in Terminal</strong>. On some Windows versions, choose{" "}
+						<strong>Open PowerShell window here</strong>.
+					</li>
+					<li>
+						Copy the command below, paste it into the blue or black window, then
+						press <strong>Enter</strong>.
+					</li>
+					<li>
+						When the updater opens, choose the full bundle unless you only want
+						the new mods. Then pick your Prism instance folder or its{" "}
+						<strong>mods</strong> folder.
+					</li>
+				</ol>
 				<pre
 					style={{
 						overflowX: "auto",
-						margin: 0,
+						margin: "0 0 0.9rem",
 						padding: "0.9rem",
 						background: "var(--bg)",
 						border: "1px solid var(--border)",
@@ -255,6 +291,18 @@ function DownloadPage() {
 				>
 					{`powershell -ExecutionPolicy Bypass -File .\\update-tsw-fabric.ps1`}
 				</pre>
+				<p
+					style={{
+						margin: 0,
+						fontSize: "0.84rem",
+						color: "var(--text-soft)",
+						lineHeight: 1.65,
+					}}
+				>
+					If Windows warns you about running a downloaded file, choose the
+					option that lets it run. If it still refuses, use the manual zip
+					download instead.
+				</p>
 				<div style={{ marginTop: "1rem" }}>
 					<Link to="/setup">Need Prism setup help?</Link>
 					<span style={{ color: "var(--text-muted)" }}> · </span>
