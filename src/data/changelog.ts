@@ -10,6 +10,68 @@ export interface ChangelogEntry {
 
 export const CHANGELOG: ChangelogEntry[] = [
 	{
+		date: "2026-05-09",
+		title: "New mods bundle",
+		description:
+			"Added a new batch of building, creature, villager, photography, and server utility mods, plus Cobblemon.",
+		added: [
+			{
+				name: "Companions!",
+				note: "Tameable companion creatures with adventure and combat utility",
+			},
+			{
+				name: "More Villagers",
+				note: "More villager professions, workstations, and trade variety",
+			},
+			{
+				name: "MrCrayfish's Furniture Mod: Refurbished",
+				note: "Modern furniture, appliances, and household decorations",
+			},
+			{ name: "Knight Lib", note: "Library — required by other mods" },
+			{
+				name: "Smooth Chunk Save",
+				note: "Server performance helper for smoother world saving",
+			},
+			{
+				name: "Structure Essentials",
+				note: "Structure generation and locating utility improvements",
+			},
+			{
+				name: "Chisel Refabricated",
+				note: "Decorative chisel blocks for more detailed building",
+			},
+			{
+				name: "Critters and Companions",
+				note: "Vanilla-style animals and small creatures for the overworld",
+			},
+			{
+				name: "Cobblemon",
+				note: "Pokemon-style creatures with catching, teams, and battles",
+			},
+			{
+				name: "Stoneworks",
+				note: "More stone variants, slabs, stairs, walls, and building options",
+			},
+			{
+				name: "Dye Depot",
+				note: "16 new dye colours and expanded colour customization",
+			},
+			{ name: "Cryonic Config", note: "Library — required by other mods" },
+			{
+				name: "Exposure Polaroid",
+				note: "Instant camera addon for faster in-game photos",
+			},
+			{
+				name: "DarkSmelting - Smelt Armor and Tools",
+				note: "Smelt unwanted gear back into useful materials",
+			},
+		],
+		notes: [
+			"Updated the full bundle and only-new-mods bundle download links.",
+			"Pack version stayed on 2026-04-23-1.",
+		],
+	},
+	{
 		date: "2026-04-23",
 		title: "Big content drop",
 		description:

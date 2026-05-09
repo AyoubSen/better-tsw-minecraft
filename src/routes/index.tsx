@@ -16,6 +16,52 @@ const CATEGORY_ACCENT: Record<Category, string> = {
 	library: "#6b7280",
 };
 
+const START_ACTIONS = [
+	{
+		kicker: "Install",
+		title: "I need to set up the pack",
+		body: "Start here if you do not have the Prism instance ready yet.",
+		to: "/setup",
+		cta: "Setup guide",
+		primary: true,
+	},
+	{
+		kicker: "Update",
+		title: "I need the mods",
+		body: "Download the full bundle, only-new-mods bundle, or Windows updater.",
+		to: "/download",
+		cta: "Downloads",
+	},
+	{
+		kicker: "Fix",
+		title: "Something is broken",
+		body: "Crashes, wrong mod list, AppData folders, Windows script issues, lag.",
+		to: "/troubleshooting",
+		cta: "Troubleshooting",
+	},
+	{
+		kicker: "Play",
+		title: "I just joined",
+		body: "Use the first-session checklist to avoid missing the important basics.",
+		to: "/checklist",
+		cta: "Checklist",
+	},
+	{
+		kicker: "Learn",
+		title: "I want to understand the server",
+		body: "Beginner-friendly guide for vanilla basics and the biggest modded changes.",
+		to: "/guide",
+		cta: "Player guide",
+	},
+	{
+		kicker: "Reference",
+		title: "I want info about a mod",
+		body: "Search by mod name or problem: waystones, recipes, backpack, storage.",
+		to: "/directed-guides",
+		cta: "Directed guides",
+	},
+] as const;
+
 function Stat({ value, label }: { value: string | number; label: string }) {
 	return (
 		<div>
@@ -55,10 +101,10 @@ function Home() {
 			{/* ── Hero ─────────────────────────────────────────────────────── */}
 			<section
 				className="fade-up"
-				style={{ maxWidth: 680, marginBottom: "4rem" }}
+				style={{ maxWidth: 720, marginBottom: "2.5rem" }}
 			>
 				<p className="label" style={{ marginBottom: "1rem" }}>
-					Fabric · Minecraft 1.21.1
+					Minecraft 1.21.1 · Fabric 0.19.1
 				</p>
 
 				<h1
@@ -82,21 +128,104 @@ function Home() {
 						marginBottom: "2rem",
 					}}
 				>
-					Everything you need to know about the mods on our server — whether
-					you've played Minecraft for years or just picked it up for the first
-					time.
+					Install the pack, update your mods, fix common issues, and learn what
+					to do once you join.
 				</p>
 
 				<div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem" }}>
-					<Link to="/mods" className="btn-primary">
-						Browse All Mods
+					<Link to="/setup" className="btn-primary">
+						Start Setup
 					</Link>
-					<Link to="/directed-guides" className="btn-ghost">
-						Directed Guides
+					<Link to="/download" className="btn-ghost">
+						Download Mods
 					</Link>
-					<Link to="/guide" className="btn-ghost">
-						🌱 New Player Guide
+					<Link to="/troubleshooting" className="btn-ghost">
+						Something Broken?
 					</Link>
+				</div>
+			</section>
+
+			{/* ── Start hub ─────────────────────────────────────────────────── */}
+			<section style={{ marginBottom: "4rem" }}>
+				<p className="label" style={{ marginBottom: "0.5rem" }}>
+					Start here
+				</p>
+				<h2
+					className="display"
+					style={{ fontSize: "1.6rem", marginBottom: "1.4rem" }}
+				>
+					What are you trying to do?
+				</h2>
+				<div
+					style={{
+						display: "grid",
+						gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+						gap: "0.85rem",
+					}}
+				>
+					{START_ACTIONS.map((action) => (
+						<Link
+							key={action.to}
+							to={action.to}
+							style={{ textDecoration: "none" }}
+						>
+							<div
+								className="card"
+								style={{
+									height: "100%",
+									padding: "1.2rem",
+									borderColor: action.primary
+										? "var(--accent-ring)"
+										: "var(--border)",
+									background: action.primary
+										? "var(--accent-dim)"
+										: "var(--bg-card)",
+								}}
+							>
+								<p
+									className="label"
+									style={{
+										margin: "0 0 0.45rem",
+										color: action.primary
+											? "var(--accent)"
+											: "var(--text-muted)",
+									}}
+								>
+									{action.kicker}
+								</p>
+								<p
+									style={{
+										margin: "0 0 0.4rem",
+										fontWeight: 800,
+										fontSize: "0.98rem",
+										color: "var(--text)",
+									}}
+								>
+									{action.title}
+								</p>
+								<p
+									style={{
+										margin: "0 0 0.85rem",
+										fontSize: "0.82rem",
+										color: "var(--text-soft)",
+										lineHeight: 1.55,
+									}}
+								>
+									{action.body}
+								</p>
+								<p
+									style={{
+										margin: 0,
+										fontSize: "0.78rem",
+										fontWeight: 800,
+										color: "var(--accent)",
+									}}
+								>
+									{action.cta} →
+								</p>
+							</div>
+						</Link>
+					))}
 				</div>
 			</section>
 
@@ -143,13 +272,13 @@ function Home() {
 			{/* ── Category grid ────────────────────────────────────────────── */}
 			<section style={{ marginBottom: "4rem" }}>
 				<p className="label" style={{ marginBottom: "0.5rem" }}>
-					What's included
+					Mod reference
 				</p>
 				<h2
 					className="display"
 					style={{ fontSize: "1.5rem", marginBottom: "1.5rem" }}
 				>
-					Browse by category
+					Browse the pack by category
 				</h2>
 
 				<div
@@ -225,7 +354,7 @@ function Home() {
 				</div>
 			</section>
 
-			{/* ── Newbie callout ───────────────────────────────────────────── */}
+			{/* ── Reference callouts ───────────────────────────────────────── */}
 			<section
 				style={{
 					background: "var(--accent-dim)",
@@ -247,7 +376,7 @@ function Home() {
 							color: "var(--text)",
 						}}
 					>
-						New to modded Minecraft?
+						Need a gentler walkthrough?
 					</p>
 					<p
 						style={{
@@ -257,9 +386,8 @@ function Home() {
 							lineHeight: 1.6,
 						}}
 					>
-						The guide walks you through what mods are, the 7 most important ones
-						to know on day one, survival tips for this server, and a rough
-						progression path.
+						The player guide explains the Minecraft basics, what changed on this
+						server, and the first mods that matter once you are in-game.
 					</p>
 				</div>
 				<Link to="/guide" className="btn-primary" style={{ flexShrink: 0 }}>

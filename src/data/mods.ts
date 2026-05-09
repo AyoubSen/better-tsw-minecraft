@@ -1480,6 +1480,60 @@ export const MODS: Mod[] = [
 		],
 		modrinth: "moving-elevators",
 	},
+	{
+		id: "mrcrayfish-furniture-refurbished",
+		name: "MrCrayfish's Furniture Mod: Refurbished",
+		category: "decoration",
+		description:
+			"Adds a large set of modern furniture and functional household blocks, from kitchen appliances and storage pieces to seating, electronics, and outdoor decorations.",
+		features: [
+			"Modern furniture for kitchens, bedrooms, bathrooms, and lounges",
+			"Functional appliances and interactive household blocks",
+			"Decorative outdoor furniture and utility pieces",
+			"Refreshed models and sounds for a polished building experience",
+		],
+		curseforge: "refurbished-furniture",
+	},
+	{
+		id: "chisel-refabricated",
+		name: "Chisel Refabricated",
+		category: "decoration",
+		description:
+			"Adds a chisel tool and a wide range of decorative block variants inspired by the classic Chisel mod, giving builders many more texture options.",
+		features: [
+			"Chisel tool for selecting decorative block variants",
+			"Many new patterned and styled building blocks",
+			"Great for detailed walls, floors, trims, and workshop builds",
+		],
+	},
+	{
+		id: "stoneworks",
+		name: "Stoneworks",
+		category: "decoration",
+		description:
+			"Expands vanilla stone types with bricks, tiles, pillars, shingles, cobbled variants, stairs, slabs, and walls for more detailed stone builds.",
+		features: [
+			"More variants for vanilla stone families",
+			"Stairs, slabs, and walls for many new stone blocks",
+			"Stonecutter-friendly crafting flow",
+			"Useful for cottages, castles, roads, and detailed foundations",
+		],
+		modrinth: "stoneworks",
+	},
+	{
+		id: "dye-depot",
+		name: "Dye Depot",
+		category: "decoration",
+		description:
+			"Adds 16 new dye colours and improves dye-related customization for banners, collars, sheep, fish, and other colourable vanilla systems.",
+		features: [
+			"16 additional dye colours",
+			"Expanded colour options for decorative blocks and items",
+			"Improved dye crafting and conversion flow",
+			"Optional visual tweaks for vanilla dye naming and textures",
+		],
+		modrinth: "dye-depot",
+	},
 
 	// ── MOBS & TRADING ────────────────────────────────────────────────────
 
@@ -1551,6 +1605,66 @@ export const MODS: Mod[] = [
 			"Animals breed automatically if trough is full",
 		],
 		modrinth: "animal-feeding-trough",
+	},
+	{
+		id: "companions",
+		name: "Companions!",
+		category: "mobs",
+		description:
+			"Adds tameable companion creatures with their own abilities, alongside extra hostile mobs, weapons, and adventure-focused encounters.",
+		features: [
+			"Multiple tameable companion creatures",
+			"Companions can follow, sit, or wander",
+			"New hostile mobs and combat encounters",
+			"Extra weapons and progression items tied to companion gameplay",
+		],
+		newbieNote:
+			"Treat companions like upgraded pets. They can help in fights, but you still need to manage them and keep them safe.",
+		modrinth: "companions-mod",
+	},
+	{
+		id: "more-villagers",
+		name: "More Villagers",
+		category: "mobs",
+		description:
+			"Adds more villager professions and workstations, giving villages a wider range of trades and making villager setups more varied.",
+		features: [
+			"New villager professions",
+			"Profession-specific workstations",
+			"More trade options for village progression",
+			"Additional reasons to protect and develop villages",
+		],
+		modrinth: "more-villagers-re-employed",
+	},
+	{
+		id: "critters-and-companions",
+		name: "Critters and Companions",
+		category: "mobs",
+		description:
+			"Adds vanilla-style animals and small creatures to the overworld, making rivers, forests, oceans, jungles, and snowy biomes feel more alive.",
+		features: [
+			"New animals such as otters, ferrets, koi, red pandas, and more",
+			"Some critters can be tamed or interacted with",
+			"Biome-specific spawns for more natural exploration",
+			"Extra creature drops and small utility items",
+		],
+		modrinth: "critters-and-companions",
+	},
+	{
+		id: "cobblemon",
+		name: "Cobblemon",
+		category: "mobs",
+		description:
+			"Adds Pokemon-style creatures into Minecraft as natural world spawns, with catching, battling, team building, and exploration-focused progression.",
+		features: [
+			"Pokemon-inspired creatures spawn throughout the world",
+			"Catch and build a team of companions",
+			"Turn-based battles integrated into Minecraft",
+			"Works with exploration, biomes, and multiplayer progression",
+		],
+		newbieNote:
+			"If you see unfamiliar creatures around the world, they are Cobblemon. You can catch them, train them, and use them in battles instead of treating them like normal mobs.",
+		modrinth: "cobblemon",
 	},
 
 	// ── VISUALS & PERFORMANCE ─────────────────────────────────────────────
@@ -1833,6 +1947,33 @@ export const MODS: Mod[] = [
 		modrinth: "noisium",
 	},
 	{
+		id: "smooth-chunk-save",
+		name: "Smooth Chunk Save",
+		category: "performance",
+		description:
+			"Spreads chunk saving work out more smoothly so the server can save world data with fewer lag spikes during normal play.",
+		features: [
+			"Continuous chunk saving instead of large save spikes",
+			"Improves server TPS stability",
+			"Especially useful while many players explore or build",
+		],
+		curseforge: "smooth-chunk-save",
+	},
+	{
+		id: "structure-essentials",
+		name: "Structure Essentials",
+		category: "performance",
+		description:
+			"Improves structure generation and structure searching behavior with safer placement checks, better locating, and compatibility-focused structure utilities.",
+		features: [
+			"Faster and safer structure locating",
+			"Helps prevent unwanted structure overlap",
+			"Improves structure biome compatibility behavior",
+			"Adds structure debug and utility support behind the scenes",
+		],
+		curseforge: "structure-essentials-forge-fabric",
+	},
+	{
 		id: "exposure",
 		name: "Exposure",
 		category: "qol",
@@ -1847,6 +1988,22 @@ export const MODS: Mod[] = [
 		newbieNote:
 			"This is a fun creative mod — craft a camera, take photos of your base or your friends, develop the film, and decorate your house with the prints!",
 		modrinth: "exposure",
+	},
+	{
+		id: "exposure-polaroid",
+		name: "Exposure Polaroid",
+		category: "qol",
+		description:
+			"Adds an instant camera addon for Exposure, letting you take photos and receive finished prints quickly without the full darkroom workflow.",
+		features: [
+			"Instant camera for faster photography",
+			"Colour and black-and-white instant slides",
+			"Photos are produced shortly after exposure",
+			"Convenient option for documenting builds and server moments",
+		],
+		newbieNote:
+			"If the normal Exposure camera feels too involved, this is the quick version: load slides, take a picture, and get a photo almost immediately.",
+		modrinth: "exposure-polaroid",
 	},
 	{
 		id: "oritech",
@@ -1864,9 +2021,41 @@ export const MODS: Mod[] = [
 			"This is the most \"technical\" mod in the pack. Don't worry about it early on — it's a mid-to-late game mod for players who want to automate resource production.",
 		modrinth: "oritech",
 	},
+	{
+		id: "darksmelting",
+		name: "DarkSmelting - Smelt Armor and Tools",
+		category: "qol",
+		description:
+			"Lets unwanted armor, tools, weapons, and metal utility items be smelted back into useful materials instead of clogging storage.",
+		features: [
+			"Smelt many vanilla tools, weapons, and armor pieces",
+			"Recover useful materials from loot clutter",
+			"Works well with dungeon-heavy exploration",
+			"Reduces wasted metal gear in storage systems",
+		],
+		modrinth: "darksmelting",
+	},
 
 	// ── LIBRARIES (hidden by default) ─────────────────────────────────────
 
+	{
+		id: "knight-lib",
+		name: "Knight Lib",
+		category: "library",
+		isLibrary: true,
+		description: "Shared library used by companion and adventure mods.",
+		features: [],
+		modrinth: "knight-lib",
+	},
+	{
+		id: "cryonic-config",
+		name: "Cryonic Config",
+		category: "library",
+		isLibrary: true,
+		description: "Minimal configuration API used by other mods.",
+		features: [],
+		curseforge: "cryonicconfig",
+	},
 	{
 		id: "fabric-api",
 		name: "Fabric API",
