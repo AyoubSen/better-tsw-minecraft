@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Download, ExternalLink, FolderOpen, Terminal } from "lucide-react";
+import { Download, ExternalLink, Terminal } from "lucide-react";
 import downloadManifest from "../../public/downloads/manifest.json";
 
 export const Route = createFileRoute("/download")({ component: DownloadPage });
@@ -172,57 +172,6 @@ function DownloadPage() {
 			<section
 				style={{
 					padding: "1.25rem",
-					background: "var(--accent-dim)",
-					border: "1px solid var(--accent-ring)",
-					borderRadius: "1rem",
-					marginBottom: "1.5rem",
-				}}
-			>
-				<div
-					style={{
-						display: "flex",
-						gap: "0.65rem",
-						alignItems: "flex-start",
-					}}
-				>
-					<FolderOpen
-						size={18}
-						style={{ color: "var(--accent)", flexShrink: 0, marginTop: 2 }}
-					/>
-					<div>
-						<p
-							style={{
-								margin: "0 0 0.35rem",
-								fontWeight: 800,
-								color: "var(--text)",
-							}}
-						>
-							Which folder should I pick?
-						</p>
-						<p
-							style={{
-								margin: 0,
-								fontSize: "0.84rem",
-								color: "var(--text-soft)",
-								lineHeight: 1.65,
-							}}
-						>
-							Pick your Prism instance folder, or the `mods` folder inside it.
-							If your instance is hidden in AppData, choose the paste-path
-							option in the updater and paste the full folder path. To find that
-							path, open Prism Launcher, select your instance, click{" "}
-							<strong>Edit</strong>, choose <strong>Mods</strong> on the left,
-							then click <strong>Open folder</strong> in the bottom-right. When
-							File Explorer opens the mods folder, click the address bar at the
-							top and copy the full path.
-						</p>
-					</div>
-				</div>
-			</section>
-
-			<section
-				style={{
-					padding: "1.25rem",
 					background: "var(--bg-card)",
 					border: "1px solid var(--border)",
 					borderRadius: "1rem",
@@ -275,6 +224,13 @@ function DownloadPage() {
 						When the updater opens, choose the full bundle unless you only want
 						the new mods. Then pick your Prism instance folder or its{" "}
 						<strong>mods</strong> folder.
+					</li>
+					<li>
+						If you need to paste the mods folder path, open Prism Launcher,
+						select your instance, click <strong>Edit</strong>, choose{" "}
+						<strong>Mods</strong> on the left, then click{" "}
+						<strong>Open folder</strong> in the bottom-right. In File Explorer,
+						click the address bar at the top and copy the full path.
 					</li>
 				</ol>
 				<pre
