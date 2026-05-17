@@ -1651,6 +1651,76 @@ export const MODS: Mod[] = [
 			"If you see unfamiliar creatures around the world, they are Cobblemon. You can catch them, train them, and use them in battles instead of treating them like normal mobs.",
 		modrinth: "cobblemon",
 	},
+	{
+		id: "cobbleworkers",
+		name: "Cobbleworkers",
+		category: "mobs",
+		description:
+			"Adds extra Cobblemon-focused worker and utility support, expanding how Cobblemon can fit into longer-term base and progression gameplay.",
+		features: [
+			"Cobblemon addon content for utility-focused play",
+			"Extra progression hooks around trained creatures",
+			"Works alongside the main Cobblemon mod",
+			"Supports multiplayer Cobblemon servers",
+		],
+		modrinth: "cobbleworkers",
+	},
+	{
+		id: "safe-pastures",
+		name: "Safe Pastures",
+		category: "mobs",
+		description:
+			"Improves Cobblemon pasture management so stored or displayed creatures are easier to keep organised and safer around bases.",
+		features: [
+			"Pasture-focused Cobblemon quality-of-life support",
+			"Helps protect creature setups around player bases",
+			"Makes Cobblemon storage areas easier to manage",
+			"Designed for multiplayer-friendly Cobblemon play",
+		],
+		modrinth: "safe-pastures",
+	},
+	{
+		id: "cobblemon-mega-showdown",
+		name: "Cobblemon: Mega Showdown",
+		category: "mobs",
+		description:
+			"Adds Mega Evolution-focused content to Cobblemon, giving battles more high-impact progression and team-building options.",
+		features: [
+			"Mega Evolution content for Cobblemon battles",
+			"More battle-focused progression goals",
+			"Extra team-building variety",
+			"Works as an addon to the main Cobblemon experience",
+		],
+		modrinth: "cobblemon-mega-showdown",
+	},
+	{
+		id: "cobblepedia",
+		name: "Cobblepedia",
+		category: "qol",
+		description:
+			"Adds an in-game Cobblemon reference guide so players can look up creature information without leaving Minecraft.",
+		features: [
+			"In-game Cobblemon information reference",
+			"Helps identify creatures and progression details",
+			"Useful for new players learning Cobblemon",
+			"Reduces the need to check external guides while playing",
+		],
+		modrinth: "cobblepedia",
+	},
+	{
+		id: "cobblenav",
+		name: "Cobblenav",
+		category: "qol",
+		description:
+			"Adds navigation and tracking support for Cobblemon exploration, helping players find and follow creature-related goals more easily.",
+		features: [
+			"Cobblemon-focused navigation tools",
+			"Helps with creature hunting and exploration",
+			"Useful for finding targets in large modded worlds",
+			"Complements JourneyMap and other exploration tools",
+		],
+		modrinth: "cobblenav",
+	},
 
 	// ── VISUALS & PERFORMANCE ─────────────────────────────────────────────
 

@@ -2,13 +2,13 @@
   "version": "2026-04-23-1",
   "minecraft": "1.21.1",
   "fabric": "0.19.1",
-  "zipUrl": "https://8ptatswgh8.ufs.sh/f/MnMh6jksMhBKeiBTBCS1ZghtujW7MURBfpISxXkwN6HaEobe",
-  "newModsZipUrl": "https://8ptatswgh8.ufs.sh/f/MnMh6jksMhBK1fNYZndeiTmVgFhNr3ClIP6Swe9yspKa0Qk7",
+  "zipUrl": "https://8ptatswgh8.ufs.sh/f/MnMh6jksMhBKgMPfh1NbzsYb2hvi1p0fEDjM6XxQalLBOdoG",
+  "newModsZipUrl": "https://8ptatswgh8.ufs.sh/f/MnMh6jksMhBKoweRtsnDpcO6amMAznQ2Y5lk4qTNsgw9LjBv",
   "sha256": "",
   "newModsSha256": "",
-  "updatedAt": "2026-05-09",
+  "updatedAt": "2026-05-17",
   "notes": [
-    "Added the May 9 new-mods bundle, including Cobblemon.",
+    "Added the May 17 new-mods bundle with Cobblemon addon and support mods.",
     "Updated hosted full mod bundle zip.",
     "Updated only-new-mods bundle zip for incremental installs."
   ]

@@ -10,6 +10,38 @@ export interface ChangelogEntry {
 
 export const CHANGELOG: ChangelogEntry[] = [
 	{
+		date: "2026-05-17",
+		title: "Cobblemon addon update",
+		description:
+			"Added a new Cobblemon-focused batch with battle, navigation, information, and pasture support mods.",
+		added: [
+			{
+				name: "Cobbleworkers",
+				note: "Cobblemon utility addon for extra creature-related gameplay support",
+			},
+			{
+				name: "Safe Pastures",
+				note: "Pasture safety and quality-of-life support for Cobblemon setups",
+			},
+			{
+				name: "Cobblemon: Mega Showdown",
+				note: "Adds Mega Evolution-focused Cobblemon battle content",
+			},
+			{
+				name: "Cobblepedia",
+				note: "In-game Cobblemon information and reference guide",
+			},
+			{
+				name: "Cobblenav",
+				note: "Navigation and tracking helper for Cobblemon exploration",
+			},
+		],
+		notes: [
+			"Updated the full bundle and only-new-mods bundle download links.",
+			"Pack version stayed on 2026-04-23-1.",
+		],
+	},
+	{
 		date: "2026-05-09",
 		title: "New mods bundle",
 		description:
